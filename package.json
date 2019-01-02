@@ -1,0 +1,25 @@
+{
+  "name": "doority_telegram_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "email-validator": "^2.0.4",
+    "pg": "^7.7.1",
+    "telebot": "^1.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikesavvakisnet/doority-project-telegram-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikesavvakisnet/doority-project-telegram-bot/issues"
+  },
+  "homepage": "https://github.com/mikesavvakisnet/doority-project-telegram-bot#readme"
+}
