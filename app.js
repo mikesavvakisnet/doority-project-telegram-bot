@@ -9,8 +9,8 @@ const pool = new Pool({ssl: true});
 
 const bot = new TeleBot({
     token: process.env.TELEGRAM_BOT_TOKEN,
-    webhook: { // Optional. Use webhook instead of polling.
-        url: 'https://doority-telegram.herokuapp.com/', // HTTPS url to send updates to.
+    webhook: {
+        url: 'https://doority-telegram.herokuapp.com', // HTTPS url to send updates to.
         host: '0.0.0.0', // Webhook server host.
         port: process.env.PORT, // Server port.
         maxConnections: 40 // Optional. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
