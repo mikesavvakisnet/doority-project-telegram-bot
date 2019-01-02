@@ -36,6 +36,9 @@ bot.on('/register', msg => {
         }
 
         if(result.rows.length > 0){
+            if(!result.rows[0].telegram){
+                return bot.sendMessage(id, 'Identity verification required. Please enter your email registered with doority system.', {ask: 'email_id'});
+            }
             return bot.sendMessage(id, 'Verification completed. Welcome to fossaegean lounge.');
         }else{
             return bot.sendMessage(id, 'Identity verification required. Please enter your email registered with doority system.', {ask: 'email_id'});
@@ -56,7 +59,7 @@ bot.on('ask.email_id', msg => {
         return bot.sendMessage(id, `Your email is incorrect. Try again...`, {ask: 'email_id'});
     }
 
-    pool.query('SELECT first_code FROM public.telegram_verification WHERE user_id = (select id from public.user where email = $1)', [email], (err, result) => {
+    pool.query('select id from public.user where email = $1', [email], (err, result) => {
         if(err){
             //TODO: catch errors
         }
