@@ -99,4 +99,4 @@ bot.on('ask.token_verification', msg => {
 
 });
 
-bot.start();
+bot.start(process.env.PORT);
