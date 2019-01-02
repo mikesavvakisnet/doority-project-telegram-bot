@@ -35,7 +35,7 @@ bot.on('/register', msg => {
             return;
         }
 
-        if(result.rows[0].telegram){
+        if(result.rows.length > 0){
             return bot.sendMessage(id, 'Verification completed. Welcome to fossaegean lounge.');
         }else{
             return bot.sendMessage(id, 'Identity verification required. Please enter your email registered with doority system.', {ask: 'email_id'});
