@@ -1,6 +1,7 @@
 //https://github.com/mullwar/telebot
 
 const TeleBot = require('telebot');
+const request = require('request');
 var validator = require("email-validator");
 
 const {Pool} = require('pg');
@@ -22,6 +23,28 @@ const bot = new TeleBot({
             message: 'Too many messages, relax!'
         }
     }
+});
+
+// On commands
+bot.on(['/start'], msg => {
+
+    let replyMarkup = bot.keyboard([
+        ['/spaceStatus']
+    ], {resize: true});
+
+    return bot.sendMessage(msg.from.id, 'Welcome to fossaegean telegram bot. My name is Linus. Have fun. ', {replyMarkup});
+
+});
+
+bot.on('/spaceStatus', msg => {
+    request('https://doority.herokuapp.com/api/v1/door/status', function (error, response, body) {
+        var data = JSON.parse(body);
+        if(data.isOpen){
+            return bot.sendMessage(msg.from.id, 'Space is open!');
+        }else{
+            return bot.sendMessage(msg.from.id, 'Space is closed!');
+        }
+    });
 });
 
 bot.on('/register', msg => {
